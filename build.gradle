@@ -4,6 +4,10 @@ buildscript {
         google()
         jcenter()
     }
+    ext{
+        supportLibVersion = "30.0.0"
+        buildToolsVersion = "30.0.3"
+    }
     dependencies {
         classpath "com.android.tools.build:gradle:4.1.1"
 

@@ -36,4 +36,7 @@
         <item name="android:textSize">10sp</item>
         <item name="android:textColor">@color/txtGreen</item>
     </style>
+
+    <style name="toolbarTheme" parent="Base.ThemeOverlay.AppCompat.Dark.ActionBar" />
+
 </resources>
