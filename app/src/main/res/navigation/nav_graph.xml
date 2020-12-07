@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/porfolioFragment">
+    app:startDestination="@id/splashFragment">
 
     <fragment
         android:id="@+id/porfolioFragment"
@@ -19,4 +19,8 @@
         android:name="id.putraprima.mygoldtracker.screen.profile.ProfileFragment"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile" />
+    <fragment
+        android:id="@+id/splashFragment"
+        android:name="id.putraprima.mygoldtracker.screen.SplashFragment"
+        android:label="SplashFragment" />
 </navigation>
