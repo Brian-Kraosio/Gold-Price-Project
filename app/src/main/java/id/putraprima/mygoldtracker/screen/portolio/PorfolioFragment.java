@@ -34,7 +34,7 @@ public class PorfolioFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
         View view = inflater.inflate(R.layout.fragment_porfolio,container,false);
         TextView textView = (TextView) view;
-        textView.setText("Fragment #"+mPage);
+        textView.setText("blablabla " + mPage);
         return view;
     }
 }
