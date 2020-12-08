@@ -15,7 +15,7 @@ import id.putraprima.mygoldtracker.screen.wallet.WalletFragment;
 public class TabGoldAdapter extends FragmentPagerAdapter {
 
     final int PAGE_COUNT = 3;
-    private String tabTitles[] = new String[] {"Wallet","Transactions","Buy/Sell"};
+    private String tabTitles[] = new String[] {"Wallet","Price","Buy"};
     private Context context;
 
     public TabGoldAdapter(FragmentManager fm, Context context){
