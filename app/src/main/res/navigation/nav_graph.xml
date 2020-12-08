@@ -22,5 +22,9 @@
     <fragment
         android:id="@+id/splashFragment"
         android:name="id.putraprima.mygoldtracker.screen.SplashFragment"
-        android:label="SplashFragment" />
+        android:label="SplashFragment" >
+        <action
+            android:id="@+id/action_splashFragment_to_porfolioFragment"
+            app:destination="@id/porfolioFragment" />
+    </fragment>
 </navigation>
