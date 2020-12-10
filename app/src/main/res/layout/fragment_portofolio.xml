@@ -1,8 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--<TextView xmlns:android="http://schemas.android.com/apk/res/android"-->
-<!--    android:layout_width="match_parent"-->
-<!--    android:layout_height="match_parent"-->
-<!--    android:gravity="center" />-->
 
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
 xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -12,41 +8,45 @@ xmlns:fancy="http://schemas.android.com/apk/res-auto">
 <data>
 <variable
     name="viewModel"
-    type="id.putraprima.mygoldtracker.MainActivityViewModel" />
+    type="id.putraprima.mygoldtracker.screen.portofolio.PortofolioViewModel" />
 
 </data>
-
-<!--    tools:context=".screen.portolio.PorfolioFragment">-->
 
     <androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+<<<<<<< HEAD:app/src/main/res/layout/fragment_porfolio.xml
         android:background="@color/black_real"
     tools:context=".MainActivity"
+=======
+    tools:context=".screen.portofolio.PortofolioFragment"
+>>>>>>> b5dee49f7edda692b75865928e91cd00aba2ce50:app/src/main/res/layout/fragment_portofolio.xml
     android:id="@+id/lntab">
 
 
-    <androidx.viewpager.widget.ViewPager
-        android:id="@+id/viewpager"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="8dp"
-        android:layout_weight="1"
-        android:background="@android:color/white"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView3">
+        <androidx.viewpager.widget.ViewPager
+            android:id="@+id/viewpager"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="8dp"
+            android:layout_weight="1"
+            android:background="@android:color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView3"
+            app:layout_constraintVertical_bias="1.0">
 
-        <com.google.android.material.tabs.TabLayout
-            android:id="@+id/sliding_tabs"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/cream"
-            app:tabMode="fixed" />
-    </androidx.viewpager.widget.ViewPager>
+            <com.google.android.material.tabs.TabLayout
+                android:id="@+id/sliding_tabs"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/cream"
+                app:tabMode="fixed" />
+        </androidx.viewpager.widget.ViewPager>
 
-    <ImageView
+        <ImageView
         android:id="@+id/imageView2"
         android:layout_width="27dp"
         android:layout_height="23dp"

@@ -16,11 +16,15 @@ import android.widget.Toast;
 
 import com.google.android.material.tabs.TabLayout;
 import id.putraprima.mygoldtracker.adapter.TabGoldAdapter;
+<<<<<<< HEAD
 //import id.putraprima.mygoldtracker.databinding.ActivityMainBinding;
+=======
+>>>>>>> b5dee49f7edda692b75865928e91cd00aba2ce50
 import id.putraprima.mygoldtracker.model.Profile;
 
 public class MainActivity extends AppCompatActivity {
 
+<<<<<<< HEAD
         @Override
         protected void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
@@ -77,4 +81,14 @@ public class MainActivity extends AppCompatActivity {
 //        }
 //        return super.onOptionsItemSelected(item);
 //    }
+=======
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        setTheme(R.style.Theme_MyGoldTracker);
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+    }
+>>>>>>> b5dee49f7edda692b75865928e91cd00aba2ce50
 }

@@ -1,4 +1,4 @@
-package id.putraprima.mygoldtracker;
+package id.putraprima.mygoldtracker.screen.portofolio;
 
 import android.app.Application;
 
@@ -8,14 +8,14 @@ import androidx.lifecycle.ViewModel;
 import id.putraprima.mygoldtracker.model.Profile;
 import id.putraprima.mygoldtracker.repository.ProfileRepository;
 
-public class MainActivityViewModel extends ViewModel {
+public class PortofolioViewModel extends ViewModel {
     private ProfileRepository profileRepository;
     private LiveData<Profile> profileLiveData;
 
-    public MainActivityViewModel(Application application) {
+    public PortofolioViewModel(Application application) {
         super();
-       profileRepository = new ProfileRepository(application);
-       profileLiveData = profileRepository.getProfileLiveData();
+        profileRepository = new ProfileRepository(application);
+        profileLiveData = profileRepository.getProfileLiveData();
     }
 
     public LiveData<Profile> getProfileLiveData() {

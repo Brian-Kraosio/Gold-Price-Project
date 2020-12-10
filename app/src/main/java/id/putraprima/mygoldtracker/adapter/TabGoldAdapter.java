@@ -2,13 +2,11 @@ package id.putraprima.mygoldtracker.adapter;
 
 import android.content.Context;
 
-import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
 import id.putraprima.mygoldtracker.screen.buy.BuyFragment;
-import id.putraprima.mygoldtracker.screen.portolio.PorfolioFragment;
 import id.putraprima.mygoldtracker.screen.transactions.TransactionsFragment;
 import id.putraprima.mygoldtracker.screen.wallet.WalletFragment;
 
@@ -18,8 +16,8 @@ public class TabGoldAdapter extends FragmentPagerAdapter {
     private String tabTitles[] = new String[] {"Wallet","Price","Buy"};
     private Context context;
 
-    public TabGoldAdapter(FragmentManager fm, Context context){
-        super(fm); this.context = context;
+    public TabGoldAdapter(FragmentManager fm){
+        super(fm);
     }
 
     @Override
