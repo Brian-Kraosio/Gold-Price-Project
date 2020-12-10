@@ -23,4 +23,8 @@
 
     <color name="black_real">#000000</color>
     <color name="cream">#e8bd70</color>
+
+    <color name="babyblue">#b4b4ca</color>
+    <color name="brown">#DEB887</color>
+    <color name="rose">#a9594b</color>
 </resources>
