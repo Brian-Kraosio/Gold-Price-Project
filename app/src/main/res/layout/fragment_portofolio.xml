@@ -15,7 +15,12 @@ xmlns:fancy="http://schemas.android.com/apk/res-auto">
     <androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+<<<<<<< HEAD:app/src/main/res/layout/fragment_porfolio.xml
+        android:background="@color/black_real"
+    tools:context=".MainActivity"
+=======
     tools:context=".screen.portofolio.PortofolioFragment"
+>>>>>>> b5dee49f7edda692b75865928e91cd00aba2ce50:app/src/main/res/layout/fragment_portofolio.xml
     android:id="@+id/lntab">
 
 

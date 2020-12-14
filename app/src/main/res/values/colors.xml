@@ -17,10 +17,15 @@
     <color name="txtGreen">#17B978</color>
 
     <color name="gold">#DFC170</color>
-    <color name="black_semi_transparent">#82000000</color>
+    <color name="black_semi_transparent">#99000000</color>
     <color name="white_pressed">#757575</color>
     <color name="dark_grey">#131313</color>
 
     <color name="black_real">#000000</color>
     <color name="cream">#e8bd70</color>
+
+    <color name="babyblue">#b4b4ca</color>
+    <color name="brown">#DEB887</color>
+    <color name="rose">#a9594b</color>
+    <color name="transparent">#4F000000</color>
 </resources>
