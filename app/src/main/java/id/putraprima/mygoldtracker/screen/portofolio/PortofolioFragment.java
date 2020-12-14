@@ -2,9 +2,13 @@ package id.putraprima.mygoldtracker.screen.portofolio;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.NavDirections;
+import androidx.navigation.Navigation;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,6 +18,7 @@ import android.view.ViewGroup;
 import id.putraprima.mygoldtracker.R;
 import id.putraprima.mygoldtracker.adapter.TabGoldAdapter;
 import id.putraprima.mygoldtracker.databinding.FragmentPortofolioBinding;
+import id.putraprima.mygoldtracker.model.Profile;
 
 public class PortofolioFragment extends Fragment {
 
@@ -43,7 +48,22 @@ public class PortofolioFragment extends Fragment {
         binding.setLifecycleOwner(this);
         return binding.getRoot();
     }
-//
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        binding.openOption.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Profile profile = viewModel.getProfileLiveData().getValue();
+                assert profile != null;
+                NavDirections action = PortofolioFragmentDirections.actionPorfolioFragmentToProfileFragment(profile);
+                Navigation.findNavController(requireView()).navigate(action);
+            }
+        });
+    }
+
+    //
 //    @Override
 //    public boolean onCreateOptionsMenu(Menu menu) {
 //        MenuInflater inflater = getMenuInflater();
