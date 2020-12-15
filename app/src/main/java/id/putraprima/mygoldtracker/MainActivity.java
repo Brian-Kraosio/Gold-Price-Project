@@ -2,7 +2,6 @@ package id.putraprima.mygoldtracker;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-<<<<<<< HEAD
 
 public class MainActivity extends AppCompatActivity {
 
@@ -13,25 +12,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
     }
-=======
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
-import android.widget.Toast;
-
-import com.google.android.material.tabs.TabLayout;
-import id.putraprima.mygoldtracker.adapter.TabGoldAdapter;
-//import id.putraprima.mygoldtracker.databinding.ActivityMainBinding;
-import id.putraprima.mygoldtracker.model.Profile;
-
-public class MainActivity extends AppCompatActivity {
-
-        @Override
-        protected void onCreate(Bundle savedInstanceState) {
-            super.onCreate(savedInstanceState);
-            setContentView(R.layout.activity_main);
-            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
-        }
 
 
 //    private ActivityMainBinding binding;
@@ -90,5 +70,4 @@ public class MainActivity extends AppCompatActivity {
 //        setContentView(R.layout.activity_main);
 //
 //    }
->>>>>>> 1107e2ff5bf6462528db85a87dcfb7dfab032e67
 }
