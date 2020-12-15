@@ -23,8 +23,35 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
+<<<<<<< HEAD
             android:layout_height="405dp">
 
+=======
+            android:layout_height="350dp"
+            android:orientation="vertical">
+            <ImageView
+                android:layout_marginTop="45dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:src="@drawable/profile_image"/>
+            <TextView
+                android:layout_marginTop="10dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Jacob Voyles"
+                android:textColor="#fff"
+                android:textStyle="bold"
+                android:textSize="21sp"/>
+        </LinearLayout>
+        <androidx.cardview.widget.CardView
+            android:layout_width="400dp"
+            android:layout_height="120dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="275dp"
+            android:background="@color/white">
+>>>>>>> 1107e2ff5bf6462528db85a87dcfb7dfab032e67
             <LinearLayout
                 android:background="@drawable/gradientbackground"
                 android:layout_width="match_parent"
@@ -179,6 +206,7 @@
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+<<<<<<< HEAD
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="35dp"
                 android:background="@drawable/buttonstyle"
@@ -186,6 +214,40 @@
                 android:text="Save"
                 android:textColor="#fff" />
         </LinearLayout>
+=======
+                android:paddingLeft="20dp"
+                android:text="jacobvoyles@gmail.com"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_marginTop="25dp"
+            android:orientation="horizontal"
+            android:paddingLeft="25dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:src="@drawable/ic_baseline_create_24"/>
+            <TextView
+                android:textStyle="bold"
+                android:layout_gravity="center_vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="20dp"
+                android:text="Jacob Voyles"/>
+
+        </LinearLayout>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="35dp"
+            android:text="Save"
+            android:textColor="#000"
+            android:theme="@style/buttonstyle3" />
+    </LinearLayout>
+>>>>>>> 1107e2ff5bf6462528db85a87dcfb7dfab032e67
 
     </LinearLayout>
 </layout>
