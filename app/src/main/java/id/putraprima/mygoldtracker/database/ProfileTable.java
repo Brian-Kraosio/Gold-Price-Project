@@ -6,22 +6,16 @@ import androidx.annotation.NonNull;
 import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
-import androidx.room.TypeConverters;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
 import java.util.concurrent.Executors;
 
-import id.putraprima.mygoldtracker.Converters;
 import id.putraprima.mygoldtracker.dao.ProfileDao;
-import id.putraprima.mygoldtracker.dao.WalletDao;
 import id.putraprima.mygoldtracker.model.Profile;
-import id.putraprima.mygoldtracker.model.Wallet;
 
-@Database(entities = {Profile.class, Wallet.class}, version = 2, exportSchema = false)
-@TypeConverters({Converters.class})
+@Database(entities = {Profile.class}, version = 1, exportSchema = false)
 public abstract class ProfileTable extends RoomDatabase {
     public abstract ProfileDao profileDao();
-    public abstract WalletDao walletDao();
     private static ProfileTable INSTANCE;
     private static Context context;
 
