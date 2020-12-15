@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
+        <variable
+            name="price"
+            type="id.putraprima.mygoldtracker.api.BuyModel" />
 
     </data>
 
@@ -18,7 +20,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:text="0,5 gr"
+            txtGram="@{price.weight}"
             android:textColor="@color/white"
             android:textSize="18sp"
             android:textStyle="bold"
@@ -31,9 +33,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
-            android:text="02 Februari 2020"
             android:textColor="#fff"
             android:textSize="18sp"
+            txtHarga="@{price.buyPrice}"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@+id/txtGram"
@@ -45,7 +47,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
             android:layout_marginEnd="16dp"
-            android:text="Rp 424.023"
+            txtHarga="@{price.sellPrice}"
             android:textColor="#fff"
             android:textSize="18sp"
             android:textStyle="bold"

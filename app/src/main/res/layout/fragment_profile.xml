@@ -44,7 +44,7 @@
                     android:layout_gravity="center_horizontal"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Jacob Voyles"
+                    android:text="@{viewModel.profileLiveData.username}"
                     android:textColor="#fff"
                     android:textStyle="bold"
                     android:textSize="21sp" />
@@ -175,17 +175,17 @@
                     android:inputType="textPersonName"
                     android:text="@{viewModel.profileLiveData.username}" />
             </LinearLayout>
-        </LinearLayout>
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="35dp"
-            android:background="@drawable/buttonstyle"
-            android:onClick="@{()->viewModel.onBtnSaveClicked(editTextTextPersonName.getText().toString(),editTextTextEmailAddress.getText().toString())}"
-            android:text="Save"
-            android:textColor="#fff" />
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="35dp"
+                android:background="@drawable/buttonstyle"
+                android:onClick="@{()->viewModel.onBtnSaveClicked(editTextTextPersonName.getText().toString(),editTextTextEmailAddress.getText().toString())}"
+                android:text="Save"
+                android:textColor="#fff" />
+        </LinearLayout>
 
     </LinearLayout>
 </layout>

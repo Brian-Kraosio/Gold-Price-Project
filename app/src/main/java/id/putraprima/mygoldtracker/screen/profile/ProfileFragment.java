@@ -6,6 +6,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 
@@ -20,6 +21,7 @@ import androidx.navigation.Navigation;
 
 import android.provider.MediaStore;
 import android.view.LayoutInflater;
+import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
@@ -64,16 +66,14 @@ public class ProfileFragment extends Fragment {
         binding.imageChange.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Intent.ACTION_PICK);
-                intent.setType("image/*");
-                startActivityForResult(intent, 1);
+               selectImage(getContext());
             }
         });
 
         viewModel.profileLiveData().observe(getViewLifecycleOwner(), new Observer<Profile>() {
             @Override
             public void onChanged(Profile profile) {
-                if(profile!=null){
+                if (profile != null) {
                     NavDirections action = ProfileFragmentDirections.actionProfileFragmentToPorfolioFragment();
                     Navigation.findNavController(requireView()).navigate(action);
                 }
@@ -110,21 +110,36 @@ public class ProfileFragment extends Fragment {
         });
         builder.show();
     }
+
+
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == 1 && resultCode == RESULT_OK )
-        {
-            try {
-                assert data != null;
-                Uri imageUri = data.getData();
-                Profile profile = viewModel.getProfileLiveData().getValue();
-                if(profile!=null){
-                    profile.setImage(imageUri.toString());
-                    viewModel.update(profile);
-                }
-            } catch (Exception e) {
-                Toast.makeText(getContext(), "Error", Toast.LENGTH_SHORT).show();
+        if (resultCode != RESULT_CANCELED) {
+            switch (requestCode) {
+                case 0:
+                    if (resultCode == RESULT_OK && data != null) {
+                        Bitmap selectedImage = (Bitmap) data.getExtras().get("data");
+                        binding.imageChange.setImageBitmap(selectedImage);
+                    }
+
+                    break;
+                case 1:
+                    if (resultCode == RESULT_OK && data != null) {
+                        try {
+                            assert data != null;
+                            Uri imageUri = data.getData();
+                            Profile profile = viewModel.getProfileLiveData().getValue();
+                            if (profile != null) {
+                                profile.setImage(imageUri.toString());
+                                viewModel.update(profile);
+                            }
+                        } catch (Exception e) {
+                            Toast.makeText(getContext(), "Error", Toast.LENGTH_SHORT).show();
+                        }
+
+                    }
+                    break;
             }
         }
     }

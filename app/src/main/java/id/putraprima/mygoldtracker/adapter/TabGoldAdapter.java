@@ -33,10 +33,10 @@ public class TabGoldAdapter extends FragmentPagerAdapter {
                 fragment = new WalletFragment();
                 break;
             case 1:
-                fragment = new BuyFragment();
+                fragment = new TransactionsFragment();
                 break;
             case 2 :
-                fragment = new TransactionsFragment();
+                fragment = new BuyFragment();
         }
         return fragment;
     }

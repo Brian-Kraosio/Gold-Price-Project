@@ -1,0 +1,41 @@
+package id.putraprima.mygoldtracker.api;
+
+import androidx.lifecycle.MutableLiveData;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
+public class PriceRepository {
+    private ApiInterface apiInterface;
+    private MutableLiveData<TokopediaDatabase<PriceModel>> price = new MutableLiveData<>();
+
+    private static PriceRepository priceRepository;
+
+    public static PriceRepository getInstance(){
+        if (priceRepository == null){
+            priceRepository = new PriceRepository();
+        }
+        return  priceRepository;
+    }
+
+    public PriceRepository() {
+        this.apiInterface = RetrofitServices.createService(ApiInterface.class);
+    }
+
+    public MutableLiveData<TokopediaDatabase<PriceModel>> getPrice(){
+        Call<TokopediaDatabase<PriceModel>> priceData = this.apiInterface.getPrice();
+        priceData.enqueue(new Callback<TokopediaDatabase<PriceModel>>() {
+            @Override
+            public void onResponse(Call<TokopediaDatabase<PriceModel>> call, Response<TokopediaDatabase<PriceModel>> response) {
+                price.setValue(response.body());
+            }
+
+            @Override
+            public void onFailure(Call<TokopediaDatabase<PriceModel>> call, Throwable t) {
+                price.setValue(null);
+            }
+        });
+        return price;
+    }
+}

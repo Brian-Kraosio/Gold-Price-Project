@@ -15,12 +15,8 @@ xmlns:fancy="http://schemas.android.com/apk/res-auto">
     <androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-<<<<<<< HEAD:app/src/main/res/layout/fragment_porfolio.xml
         android:background="@color/black_real"
-    tools:context=".MainActivity"
-=======
     tools:context=".screen.portofolio.PortofolioFragment"
->>>>>>> b5dee49f7edda692b75865928e91cd00aba2ce50:app/src/main/res/layout/fragment_portofolio.xml
     android:id="@+id/lntab">
 
 
@@ -74,6 +70,7 @@ xmlns:fancy="http://schemas.android.com/apk/res-auto">
         android:layout_marginTop="8dp"
         android:text="@{viewModel.profileLiveData.username}"
         android:textSize="25dp"
+        android:textColor="@color/white"
         app:layout_constraintStart_toEndOf="@+id/imageView3"
         app:layout_constraintTop_toTopOf="@+id/imageView3" />
 
@@ -85,6 +82,7 @@ xmlns:fancy="http://schemas.android.com/apk/res-auto">
         android:layout_marginBottom="8dp"
         android:text="@{viewModel.profileLiveData.email}"
         android:textSize="18dp"
+        android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="@+id/imageView3"
         app:layout_constraintStart_toEndOf="@+id/imageView3"
         app:layout_constraintTop_toBottomOf="@+id/textView4" />
@@ -99,7 +97,5 @@ xmlns:fancy="http://schemas.android.com/apk/res-auto">
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/textView4"
         fancy:srcCompat="@drawable/more" />
-
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
