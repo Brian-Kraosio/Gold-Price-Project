@@ -36,7 +36,8 @@
             android:layout_width="400dp"
             android:layout_height="120dp"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="275dp">
+            android:layout_marginTop="275dp"
+            android:background="@color/white">
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -141,16 +142,17 @@ z
                 android:layout_height="wrap_content"
                 android:paddingLeft="20dp"
                 android:text="Jacob Voyles"/>
-        </LinearLayout>
-    </LinearLayout>
 
-    <Button
-        android:textColor="#fff"
-        android:background="@drawable/buttonstyle"
-        android:layout_marginTop="35dp"
-        android:layout_gravity="center_horizontal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Save"/>
+        </LinearLayout>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="35dp"
+            android:text="Save"
+            android:textColor="#000"
+            android:theme="@style/buttonstyle3" />
+    </LinearLayout>
 
 </LinearLayout>

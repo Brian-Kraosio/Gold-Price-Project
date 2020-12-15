@@ -8,7 +8,6 @@
     android:background="@color/black_real"
     tools:context=".screen.wallet.WalletFragment">
 
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="324dp"
@@ -68,138 +67,24 @@
         </LinearLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="161dp"
-        android:layout_height="157dp"
-        android:layout_alignParentBottom="true"
-        android:layout_marginTop="-324dp"
-        android:layout_marginBottom="236dp"
-        android:background="@drawable/shape"
-        android:text="@string/app_name">
-
-        <ImageView
-            android:id="@+id/image"
-            android:layout_width="60dp"
-            android:layout_height="92dp"
-            android:paddingStart="10dp"
-            android:scaleType="centerCrop"
-            android:src="@drawable/bitcoin"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0" />
-
-        <TextView
-            android:id="@+id/txtGram"
-            android:layout_width="wrap_content"
-            android:layout_height="59dp"
-            android:paddingTop="20dp"
-            android:text="0,5 gr"
-            android:textColor="@color/white"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintHorizontal_bias="0.521"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Rp 23.444.000"
-            android:textColor="#fff"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintHorizontal_bias="0.38"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.879" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="161dp"
-        android:layout_height="157dp"
+        android:layout_width="match_parent"
+        android:layout_height="138dp"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="-161dp"
         android:layout_marginTop="-324dp"
-        android:layout_marginEnd="-1dp"
-        android:layout_marginBottom="234dp"
+        android:layout_marginEnd="0dp"
+        android:layout_marginBottom="248dp"
         android:background="@drawable/shape_white"
         android:text="@string/app_name">
 
+
         <ImageView
-            android:id="@+id/image1"
-            android:layout_width="60dp"
-            android:layout_height="92dp"
-            android:paddingStart="10dp"
-            android:scaleType="centerCrop"
-            android:src="@drawable/bitcoin"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0" />
-
-        <TextView
-            android:id="@+id/txtGram1"
-            android:layout_width="wrap_content"
-            android:layout_height="59dp"
-            android:paddingTop="20dp"
-            android:text="0,5 gr"
-            android:textColor="@color/black_real"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintHorizontal_bias="0.521"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0" />
-
-        <TextView
+            android:id="@+id/imageView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Rp 23.444.000"
-            android:textColor="@color/black_real"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintHorizontal_bias="0.38"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.879" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="161dp"
-        android:layout_height="157dp"
-        android:layout_alignParentBottom="true"
-        android:layout_marginTop="-324dp"
-        android:layout_marginBottom="51dp"
-        android:background="@drawable/shape_brown"
-        android:text="@string/app_name">
-
-        <ImageView
-            android:id="@+id/image2"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_marginBottom="25dp"
-            android:paddingStart="10dp"
-            android:scaleType="centerCrop"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
             android:src="@drawable/bitcoin"
-            app:layout_constraintBottom_toTopOf="@+id/textView8"
-            app:layout_constraintEnd_toStartOf="@+id/txtGram2"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -207,7 +92,7 @@
             android:id="@+id/txtGram2"
             android:layout_width="wrap_content"
             android:layout_height="59dp"
-            android:layout_marginEnd="55dp"
+            android:layout_marginEnd="224dp"
             android:paddingTop="20dp"
             android:text="0,5 gr"
             android:textColor="@color/black_real"
@@ -215,84 +100,39 @@
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.521"
-            app:layout_constraintStart_toEndOf="@+id/image2"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0" />
+            app:layout_constraintVertical_bias="0.379" />
 
         <TextView
             android:id="@+id/textView8"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
+            android:layout_marginBottom="68dp"
             android:text="Rp 23.444.000"
             android:textColor="@color/black_real"
             android:textSize="18sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintHorizontal_bias="0.38"
+            app:layout_constraintHorizontal_bias="0.91"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/image2"
-            app:layout_constraintVertical_bias="0.879" />
+            app:layout_constraintRight_toRightOf="parent" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="161dp"
-        android:layout_height="157dp"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginTop="-324dp"
-        android:layout_marginEnd="1dp"
-        android:layout_marginBottom="48dp"
-        android:background="@drawable/shape_maroon"
-        android:text="@string/app_name">
-
-        <ImageView
-            android:id="@+id/image3"
-            android:layout_width="60dp"
-            android:layout_height="92dp"
-            android:paddingStart="10dp"
-            android:scaleType="centerCrop"
-            android:src="@drawable/bitcoin"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0" />
-
-        <TextView
-            android:id="@+id/txtGram3"
-            android:layout_width="wrap_content"
-            android:layout_height="59dp"
-            android:paddingTop="20dp"
-            android:text="0,5 gr"
-            android:textColor="@color/white"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintHorizontal_bias="0.521"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0" />
-
-        <TextView
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Rp 23.444.000"
-            android:textColor="#fff"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintHorizontal_bias="0.38"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.879" />
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.5" />
 
+        <TextView
+            android:id="@+id/txtMargin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@{(viewModel.beratLiveData*viewModel.priceLiveData().data.sell_price)-viewModel.totalHargaBeli>0 ? @color/txtGreen : @color/txtRed}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/txtGram2"
+            app:layout_constraintTop_toBottomOf="@+id/textView8" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </RelativeLayout>
