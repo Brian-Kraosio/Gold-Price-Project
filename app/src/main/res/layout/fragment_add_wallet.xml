@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/black_real"
-    tools:context=".MainActivity">
+    tools:context=".screen.addwallet.AddWalletFragment">
 
     <View
         android:id="@+id/vHalfCircle"
@@ -30,7 +30,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:text="Buy Gold"
+        android:text="Add Gold"
         android:textColor="@color/white"
         android:textSize="32sp"
         app:layout_constraintBottom_toBottomOf="@id/vHalfCircle"
@@ -126,7 +126,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:background="@drawable/half_blue_roundshape"
-        android:text="Login"
+        android:text="Submit"
         android:textColor="@color/black_real"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/cardView" />

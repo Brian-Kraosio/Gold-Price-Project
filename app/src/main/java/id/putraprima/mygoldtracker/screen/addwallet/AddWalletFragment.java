@@ -1,4 +1,4 @@
-package id.putraprima.mygoldtracker.screen.addtransaction;
+package id.putraprima.mygoldtracker.screen.addwallet;
 
 import android.os.Bundle;
 
@@ -10,9 +10,9 @@ import android.view.ViewGroup;
 
 import id.putraprima.mygoldtracker.R;
 
-public class AddTransactions extends Fragment {
+public class AddWalletFragment extends Fragment {
 
-    public AddTransactions() {
+    public AddWalletFragment() {
         // Required empty public constructor
     }
 
@@ -29,6 +29,6 @@ public class AddTransactions extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_add_transactions, container, false);
+        return inflater.inflate(R.layout.fragment_add_wallet, container, false);
     }
 }

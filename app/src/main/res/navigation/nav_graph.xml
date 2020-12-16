@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_porfolioFragment_to_profileFragment"
             app:destination="@id/profileFragment" />
+        <action
+            android:id="@+id/action_porfolioFragment_to_addWalletFragment"
+            app:destination="@id/addWalletFragment" />
     </fragment>
     <fragment
         android:id="@+id/profileFragment"
@@ -25,5 +28,14 @@
         <argument
             android:name="profile"
             app:argType="id.putraprima.mygoldtracker.model.Profile" />
+    </fragment>
+    <fragment
+        android:id="@+id/addWalletFragment"
+        android:name="id.putraprima.mygoldtracker.screen.addwallet.AddWalletFragment"
+        android:label="fragment_add_wallet"
+        tools:layout="@layout/fragment_add_wallet" >
+        <action
+            android:id="@+id/action_addWalletFragment_to_porfolioFragment"
+            app:destination="@id/porfolioFragment" />
     </fragment>
 </navigation>
