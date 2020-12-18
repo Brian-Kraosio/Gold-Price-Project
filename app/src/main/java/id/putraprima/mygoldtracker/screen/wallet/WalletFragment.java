@@ -1,5 +1,6 @@
 package id.putraprima.mygoldtracker.screen.wallet;
 
+import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -12,20 +13,34 @@ import androidx.navigation.NavDirections;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
+import com.github.mikephil.charting.components.AxisBase;
+import com.github.mikephil.charting.components.Description;
+import com.github.mikephil.charting.components.XAxis;
+import com.github.mikephil.charting.data.Entry;
+import com.github.mikephil.charting.data.LineData;
+import com.github.mikephil.charting.data.LineDataSet;
+import com.github.mikephil.charting.formatter.ValueFormatter;
+import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
+
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 import id.putraprima.mygoldtracker.R;
+import id.putraprima.mygoldtracker.adapter.WalletAdapter;
+import id.putraprima.mygoldtracker.api.HistoryModel;
 import id.putraprima.mygoldtracker.api.PriceModel;
 import id.putraprima.mygoldtracker.api.TokopediaDatabase;
-import id.putraprima.mygoldtracker.api.WalletProfitModel;
 import id.putraprima.mygoldtracker.databinding.FragmentWalletBinding;
+import id.putraprima.mygoldtracker.databinding.ItemWalletBinding;
 import id.putraprima.mygoldtracker.model.Wallet;
 import id.putraprima.mygoldtracker.screen.portofolio.PortofolioFragmentDirections;
 
@@ -33,7 +48,7 @@ public class WalletFragment extends Fragment {
 
     FragmentWalletBinding binding;
     WalletViewModel viewModel;
-    Wallet wallet;
+    PriceModel priceModel;
 
     @Nullable
     @Override
@@ -57,46 +72,81 @@ public class WalletFragment extends Fragment {
                 Navigation.findNavController(requireView()).navigate(action);
             }
         });
-
-//        viewModel.priceLiveData().observe(getViewLifecycleOwner(), new Observer<TokopediaDatabase<PriceModel>>() {
-//            @Override
-//            public void onChanged(TokopediaDatabase<PriceModel> priceModelTokopediaDatabase) {
-//                if (priceModelTokopediaDatabase!=null){
-//                    List<WalletProfitModel> walletProfitModelList = new ArrayList<>();
-//                    walletProfitModelList.add(new WalletProfitModel(0.5f, priceModelTokopediaDatabase.getData().getSell_price()/2 , priceModelTokopediaDatabase.getData().getSell_price()/2-(wallet.getBuyPrice()/2)));
-//                    walletProfitModelList.add(new WalletProfitModel(1f, priceModelTokopediaDatabase.getData().getSell_price()*1 , priceModelTokopediaDatabase.getData().getSell_price()-(wallet.getBuyPrice()*1)));
-//                    walletProfitModelList.add(new WalletProfitModel(2f, priceModelTokopediaDatabase.getData().getSell_price()*2 , priceModelTokopediaDatabase.getData().getSell_price()*2-(wallet.getBuyPrice()*2)));
-//                    walletProfitModelList.add(new WalletProfitModel(3f, priceModelTokopediaDatabase.getData().getSell_price()*3 , priceModelTokopediaDatabase.getData().getSell_price()*3-(wallet.getBuyPrice()*3)));
-//                    walletProfitModelList.add(new WalletProfitModel(4f, priceModelTokopediaDatabase.getData().getSell_price()*4 , priceModelTokopediaDatabase.getData().getSell_price()*4-(wallet.getBuyPrice()*4)));
-//                    walletProfitModelList.add(new WalletProfitModel(5f, priceModelTokopediaDatabase.getData().getSell_price()*5 , priceModelTokopediaDatabase.getData().getSell_price()*5-(wallet.getBuyPrice()*5)));
-//                    walletProfitModelList.add(new WalletProfitModel(10f, priceModelTokopediaDatabase.getData().getSell_price()*10 , priceModelTokopediaDatabase.getData().getSell_price()*10-(wallet.getBuyPrice()*10)));
-//                    walletProfitModelList.add(new WalletProfitModel(25f, priceModelTokopediaDatabase.getData().getSell_price()*25 , priceModelTokopediaDatabase.getData().getSell_price()*25-(wallet.getBuyPrice()*25)));
-//                    walletProfitModelList.add(new WalletProfitModel(50f, priceModelTokopediaDatabase.getData().getSell_price()*50 , priceModelTokopediaDatabase.getData().getSell_price()*50-(wallet.getBuyPrice()*50)));
-//                    walletProfitModelList.add(new WalletProfitModel(100f, priceModelTokopediaDatabase.getData().getSell_price()*100 , priceModelTokopediaDatabase.getData().getSell_price()*100-(wallet.getBuyPrice()*100)));
-//                    viewModel.setWalletListMutableLiveData(walletProfitModelList);
-//                }else{
-//                    Toast.makeText(getContext(), "Fail to load data", Toast.LENGTH_SHORT).show();
-//                }
-//            }
-//        });
-
-//        setupRvWallet();
+        setupRvWallet();
+//        configureChart();
     }
+
+
 
     public void setupRvWallet(){
         RecyclerView recyclerView = binding.walletRecycler;
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
-        recyclerView.setLayoutManager(linearLayoutManager);
-        WalletAdapter adapter = new WalletAdapter();
+        StaggeredGridLayoutManager gridLayoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
+        recyclerView.setLayoutManager(gridLayoutManager);
+        WalletHistoryAdapter adapter = new WalletHistoryAdapter();
         recyclerView.setAdapter(adapter);
-        viewModel.getWalletListLiveData().observe(getViewLifecycleOwner(), new Observer<List<WalletProfitModel>>() {
+
+        viewModel.listWalletLiveData.observe(getViewLifecycleOwner(), new Observer<List<Wallet>>() {
             @Override
-            public void onChanged(List<WalletProfitModel> walletProfitModels) {
-                if(walletProfitModels!=null){
-                    adapter.setWalletList(walletProfitModels);
-                }
+            public void onChanged(List<Wallet> wallets) {
+                adapter.setList(wallets);
+            }
+        });
+
+        viewModel.priceLiveData().observe(getViewLifecycleOwner(), new Observer<TokopediaDatabase<PriceModel>>() {
+            @Override
+            public void onChanged(TokopediaDatabase<PriceModel> priceModelTokopediaDatabase) {
+                adapter.setPriceModel(priceModelTokopediaDatabase.getData());
+            }
+        });
+
+        viewModel.historyLiveData().observe(getViewLifecycleOwner(), new Observer<TokopediaDatabase<List<HistoryModel>>>() {
+            @Override
+            public void onChanged(TokopediaDatabase<List<HistoryModel>> listTokopediaDatabase) {
+                setLineChart(listTokopediaDatabase.getData());
             }
         });
 
     }
+
+    public void setLineChart(List<HistoryModel> historyModels){
+        List<ILineDataSet> dataSets = new ArrayList<>();
+        ArrayList<Entry> list = new ArrayList<>();
+        LineDataSet price = new LineDataSet(list, "Price");
+        binding.chart.getAxisLeft().setTextColor(Color.WHITE);
+//        list.add(new Entry(0, 20));
+        float i = 0;
+        List<HistoryModel> historyModelsList = historyModels;
+        for (HistoryModel p: historyModelsList){
+            list.add(new Entry(i++, p.getBuy_price()));
+        }
+        price.setDrawCircleHole(true);
+        price.setCircleRadius(4);
+        price.setDrawValues(false);
+        price.setLineWidth(3);
+        price.setColor(Color.YELLOW);
+        price.setCircleColor(Color.YELLOW);
+        dataSets.add(price);
+        price.setValues(list);
+        LineData lineData = new LineData(dataSets);
+        binding.chart.setData(lineData);
+        binding.chart.invalidate();
+    }
+
+//    public void configureChart(){
+//        Description desc = new Description();
+//        desc.setText("Price History");
+//        desc.setTextSize(25);
+//        binding.chart.setDescription(desc);
+//
+//        XAxis xAxis = binding.chart.getXAxis();
+//        xAxis.setValueFormatter(new ValueFormatter() {
+//            private final SimpleDateFormat format = new SimpleDateFormat("dd MMM yyyy", Locale.ENGLISH);
+//            @Override
+//            public String getFormattedValue(float value) {
+//                long millis = (long) (value * 1000L);
+//                return format.format(new Date(millis));
+//            }
+//        });
+
+//    }
 }
