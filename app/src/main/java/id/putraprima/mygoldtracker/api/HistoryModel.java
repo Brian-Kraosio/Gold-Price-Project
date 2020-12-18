@@ -1,10 +1,13 @@
 package id.putraprima.mygoldtracker.api;
 
+import java.util.Date;
+
 public class HistoryModel {
-    private String price_id, date_price;
+    private String price_id;
+    private Date date_price;
     private float sell_price, buy_price;
 
-    public HistoryModel(String price_id, String date_price, float sell_price, float buy_price) {
+    public HistoryModel(String price_id, Date date_price, float sell_price, float buy_price) {
         this.price_id = price_id;
         this.date_price = date_price;
         this.sell_price = sell_price;
@@ -19,11 +22,11 @@ public class HistoryModel {
         this.price_id = price_id;
     }
 
-    public String getDate_price() {
+    public Date getDate_price() {
         return date_price;
     }
 
-    public void setDate_price(String date_price) {
+    public void setDate_price(Date date_price) {
         this.date_price = date_price;
     }
 

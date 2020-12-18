@@ -21,6 +21,7 @@ import android.view.ViewGroup;
 
 import com.github.mikephil.charting.components.AxisBase;
 import com.github.mikephil.charting.components.Description;
+import com.github.mikephil.charting.components.Legend;
 import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
@@ -72,8 +73,8 @@ public class WalletFragment extends Fragment {
                 Navigation.findNavController(requireView()).navigate(action);
             }
         });
+        configureChart();
         setupRvWallet();
-//        configureChart();
     }
 
 
@@ -111,42 +112,69 @@ public class WalletFragment extends Fragment {
     public void setLineChart(List<HistoryModel> historyModels){
         List<ILineDataSet> dataSets = new ArrayList<>();
         ArrayList<Entry> list = new ArrayList<>();
-        LineDataSet price = new LineDataSet(list, "Price");
+        ArrayList<Entry> listSell = new ArrayList<>();
+        LineDataSet price = new LineDataSet(list, "Buy Price");
+        LineDataSet sellPrice = new LineDataSet(listSell, "Sell Price");
         binding.chart.getAxisLeft().setTextColor(Color.WHITE);
-//        list.add(new Entry(0, 20));
+
         float i = 0;
         List<HistoryModel> historyModelsList = historyModels;
         for (HistoryModel p: historyModelsList){
             list.add(new Entry(i++, p.getBuy_price()));
+            listSell.add(new Entry(i++, p.getSell_price()));
         }
+
         price.setDrawCircleHole(true);
-        price.setCircleRadius(4);
+        price.setCircleRadius(1);
         price.setDrawValues(false);
-        price.setLineWidth(3);
+        price.setLineWidth(1);
         price.setColor(Color.YELLOW);
         price.setCircleColor(Color.YELLOW);
+        price.setDrawFilled(true);
+        price.setFillColor(Color.YELLOW);
+
+        sellPrice.setDrawCircleHole(true);
+        sellPrice.setCircleRadius(1);
+        sellPrice.setDrawValues(false);
+        sellPrice.setLineWidth(1);
+        sellPrice.setColor(Color.RED);
+        sellPrice.setCircleColor(Color.RED);
+        sellPrice.setDrawFilled(true);
+        sellPrice.setFillColor(Color.RED);
+
+        Legend legend = binding.chart.getLegend();
+        legend.setEnabled(true);
+        legend.setTextColor(Color.WHITE);
+
+
         dataSets.add(price);
+        dataSets.add(sellPrice);
+
         price.setValues(list);
+        sellPrice.setValues(listSell);
+
         LineData lineData = new LineData(dataSets);
         binding.chart.setData(lineData);
         binding.chart.invalidate();
+
     }
 
-//    public void configureChart(){
-//        Description desc = new Description();
-//        desc.setText("Price History");
-//        desc.setTextSize(25);
-//        binding.chart.setDescription(desc);
-//
-//        XAxis xAxis = binding.chart.getXAxis();
-//        xAxis.setValueFormatter(new ValueFormatter() {
-//            private final SimpleDateFormat format = new SimpleDateFormat("dd MMM yyyy", Locale.ENGLISH);
-//            @Override
-//            public String getFormattedValue(float value) {
-//                long millis = (long) (value * 1000L);
-//                return format.format(new Date(millis));
-//            }
-//        });
+    public void configureChart(){
+        Description desc = new Description();
+        desc.setText("Price History");
+        desc.setTextSize(25);
+        desc.setTextColor(Color.WHITE);
+        binding.chart.setDescription(desc);
 
-//    }
+        XAxis xAxis = binding.chart.getXAxis();
+        xAxis.setValueFormatter(new ValueFormatter() {
+            private final SimpleDateFormat format = new SimpleDateFormat("dd MMM yyyy", Locale.ENGLISH);
+            @Override
+            public String getFormattedValue(float value) {
+                long millis = (long) (value * 1000L);
+                return format.format(new Date(millis));
+            }
+        });
+
+    }
 }
