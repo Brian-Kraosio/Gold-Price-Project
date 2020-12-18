@@ -63,7 +63,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/tvUsername"
+                android:id="@+id/tvPurcahase"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
@@ -72,27 +72,27 @@
                 app:layout_constraintTop_toBottomOf="@id/tvHello" />
 
             <EditText
-                android:id="@+id/etUsername"
+                android:id="@+id/etPurchase"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@id/tvUsername" />
+                app:layout_constraintTop_toBottomOf="@id/tvPurcahase" />
 
             <TextView
-                android:id="@+id/tvPassword"
+                android:id="@+id/tvWeight"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:text="Password"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/etUsername" />
+                app:layout_constraintTop_toBottomOf="@id/etPurchase" />
 
             <EditText
-                android:id="@+id/etPassword"
+                android:id="@+id/dateText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tvPassword" />
+                app:layout_constraintTop_toBottomOf="@id/tvWeight" />
 
             <TextView
                 android:id="@+id/tvIForgot"
@@ -100,9 +100,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="8dp"
                 android:text=""
-                app:layout_constraintBottom_toBottomOf="@id/etPassword"
+                app:layout_constraintBottom_toBottomOf="@id/dateText"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@id/etPassword" />
+                app:layout_constraintTop_toTopOf="@id/dateText" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 

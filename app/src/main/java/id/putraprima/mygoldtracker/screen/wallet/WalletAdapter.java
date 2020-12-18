@@ -9,17 +9,18 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
+import id.putraprima.mygoldtracker.api.WalletProfitModel;
 import id.putraprima.mygoldtracker.databinding.ItemWalletBinding;
 import id.putraprima.mygoldtracker.model.Wallet;
 import id.putraprima.mygoldtracker.screen.transactions.TransactionsAdapter;
 
 public class WalletAdapter extends RecyclerView.Adapter<WalletAdapter.WalletViewHolder> {
-    List<Wallet> walletList;
+    List<WalletProfitModel> walletList;
 
     public WalletAdapter() {
     }
 
-    public void setWalletList(List<Wallet> walletList) {
+    public void setWalletList(List<WalletProfitModel> walletList) {
         this.walletList = walletList;
         notifyDataSetChanged();
     }
@@ -34,7 +35,7 @@ public class WalletAdapter extends RecyclerView.Adapter<WalletAdapter.WalletView
 
     @Override
     public void onBindViewHolder(@NonNull WalletViewHolder holder, int position) {
-        Wallet wallet = walletList.get(position);
+        WalletProfitModel wallet = walletList.get(position);
         holder.bind(wallet);
     }
 
@@ -54,8 +55,8 @@ public class WalletAdapter extends RecyclerView.Adapter<WalletAdapter.WalletView
             binding = itemWalletBinding;
         }
 
-        public void bind(Wallet wallet){
-            binding.setWallet(wallet);
+        public void bind(WalletProfitModel wallet){
+            binding.setPrice(wallet);
             binding.executePendingBindings();
         }
     }

@@ -5,6 +5,9 @@
     xmlns:fancy="http://schemas.android.com/apk/res-auto">
 
     <data>
+        <variable
+            name="viewModel"
+            type="id.putraprima.mygoldtracker.screen.wallet.WalletViewModel" />
 
     </data>
 
@@ -24,8 +27,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="right|center_vertical"
             android:layout_marginEnd="24dp"
-            android:paddingLeft="0dp"
-            android:text="Rp 23.444.000"
+            txtHarga="@{viewModel.weightLiveData*viewModel.priceLiveData().data.sell_price}"
             android:textColor="#fff"
             android:textSize="18sp"
             android:textStyle="bold"
@@ -40,8 +42,8 @@
             android:layout_marginTop="8dp"
             android:layout_marginEnd="24dp"
             android:paddingLeft="0dp"
-            android:text="(0.3%) $521.67"
-            android:textColor="#98FB98"
+            txtHarga="@{(viewModel.weightLiveData*viewModel.priceLiveData().data.sell_price)-viewModel.totalBuyPrice}"
+            android:textColor="@{(viewModel.weightLiveData*viewModel.priceLiveData().data.sell_price)-viewModel.totalBuyPrice>0 ? @color/txtGreen : @color/txtRed}"
             android:textSize="18sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
@@ -49,16 +51,14 @@
 
         <ImageView
             android:id="@+id/imageView"
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
+            android:layout_width="410dp"
+            android:layout_height="246dp"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="120dp"
-            android:layout_marginBottom="82dp"
+            android:layout_marginTop="8dp"
             android:src="@drawable/graph"
-            app:layout_constraintBottom_toTopOf="@+id/fab_add"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
         <ImageView
             android:id="@+id/imageView5"
@@ -66,7 +66,6 @@
             android:layout_height="31dp"
             android:layout_marginStart="16dp"
             android:layout_marginTop="32dp"
-            android:paddingLeft="10dp"
             android:scaleType="centerCrop"
             android:src="@drawable/bitcoin"
             app:layout_constraintStart_toStartOf="parent"
@@ -74,13 +73,11 @@
 
         <TextView
             android:id="@+id/textView"
+            txtGram="@{viewModel.weightLiveData}"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="top|center_vertical"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="8dp"
-            android:paddingLeft="0dp"
-            android:text="2000 gr"
             android:textColor="#fff"
             android:textSize="18sp"
             android:textStyle="bold"
@@ -88,7 +85,7 @@
             app:layout_constraintTop_toTopOf="@+id/imageView5" />
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerView"
+            android:id="@+id/walletRecycler"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginTop="24dp"
@@ -103,14 +100,13 @@
             android:layout_height="wrap_content"
             android:layout_gravity="end|bottom"
             android:layout_margin="16dp"
-            android:layout_marginEnd="36dp"
-            android:layout_marginBottom="295dp"
+            android:layout_marginEnd="32dp"
+            android:layout_marginBottom="32dp"
             android:contentDescription="Submit"
-            app:backgroundTint="@color/cream"
             android:src="@drawable/ic_baseline_add_circle_24"
+            app:backgroundTint="@color/cream"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView" />
+            app:layout_constraintEnd_toEndOf="parent" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

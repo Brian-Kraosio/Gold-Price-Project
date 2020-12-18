@@ -5,8 +5,8 @@
 
     <data>
         <variable
-            name="wallet"
-            type="id.putraprima.mygoldtracker.model.Wallet" />
+            name="price"
+            type="id.putraprima.mygoldtracker.api.WalletProfitModel" />
 
     </data>
 
@@ -35,8 +35,8 @@
                 android:layout_marginEnd="16dp"
                 android:layout_marginBottom="8dp"
                 android:paddingLeft="0dp"
-                android:text="(0.3%) $521.67"
-                android:textColor="#98FB98"
+                txtHarga="@{price.profitSell}"
+                android:textColor="@{price.profitSell>0 ? @color/txtGreen : @color/txtRed}"
                 android:textSize="15dp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -59,7 +59,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
-                android:text="0,5 gr"
+                txtGram="@{price.weight}"
                 android:textColor="@color/white"
                 android:textSize="18sp"
                 android:textStyle="bold"
@@ -72,7 +72,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="40dp"
                 android:layout_marginEnd="16dp"
-                android:text="Rp 23.444.000"
+                txtHarga="@{price.sellPrice}"
                 android:textColor="#fff"
                 android:textSize="18sp"
                 android:textStyle="bold"

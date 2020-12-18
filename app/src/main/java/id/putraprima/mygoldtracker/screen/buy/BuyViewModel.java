@@ -17,7 +17,7 @@ public class BuyViewModel extends ViewModel {
 
     public BuyViewModel(Application application) {
         super();
-        this.walletRepository = new WalletRepository(application);
+        walletRepository = new WalletRepository(application);
         listLiveData = walletRepository.getListWalletLiveData();
     }
 }

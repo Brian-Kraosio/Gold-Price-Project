@@ -5,7 +5,7 @@
 
     <data>
         <variable
-            name="Wallet"
+            name="wallet"
             type="id.putraprima.mygoldtracker.model.Wallet" />
 
     </data>
@@ -21,7 +21,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:text="0,5 gr"
+            txtGram="@{wallet.weight}"
             android:textColor="@color/white"
             android:textSize="18sp"
             android:textStyle="bold"
@@ -34,7 +34,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
-            android:text="02 Februari 2020"
+            txtDate="@{wallet.purchaseDate}"
             android:textColor="#fff"
             android:textSize="18sp"
             android:textStyle="bold"
@@ -46,15 +46,13 @@
             android:id="@+id/textView7"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
-            android:layout_marginEnd="16dp"
-            android:text="Rp 424.023"
+            android:layout_marginEnd="24dp"
             android:textColor="#fff"
             android:textSize="18sp"
             android:textStyle="bold"
+            txtHarga="@{wallet.buyPrice}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/textView6"
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
