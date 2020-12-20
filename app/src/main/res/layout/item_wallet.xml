@@ -10,9 +10,6 @@
         <variable
             name="wallet"
             type="id.putraprima.mygoldtracker.model.Wallet" />
-        <variable
-            name="viewModel"
-            type="id.putraprima.mygoldtracker.screen.wallet.WalletViewModel" />
 
     </data>
 

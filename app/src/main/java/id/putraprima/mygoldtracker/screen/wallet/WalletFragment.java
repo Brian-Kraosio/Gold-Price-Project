@@ -11,7 +11,6 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavDirections;
 import androidx.navigation.Navigation;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
@@ -19,7 +18,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.github.mikephil.charting.components.AxisBase;
 import com.github.mikephil.charting.components.Description;
 import com.github.mikephil.charting.components.Legend;
 import com.github.mikephil.charting.components.XAxis;
@@ -29,6 +27,7 @@ import com.github.mikephil.charting.data.LineDataSet;
 import com.github.mikephil.charting.formatter.ValueFormatter;
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -73,11 +72,15 @@ public class WalletFragment extends Fragment {
                 Navigation.findNavController(requireView()).navigate(action);
             }
         });
+        viewModel.historyLiveData().observe(getViewLifecycleOwner(), new Observer<TokopediaDatabase<List<HistoryModel>>>() {
+            @Override
+            public void onChanged(TokopediaDatabase<List<HistoryModel>> listTokopediaDatabase) {
+                setLineChart(listTokopediaDatabase.getData());
+            }
+        });
         configureChart();
         setupRvWallet();
     }
-
-
 
     public void setupRvWallet(){
         RecyclerView recyclerView = binding.walletRecycler;
@@ -100,32 +103,45 @@ public class WalletFragment extends Fragment {
             }
         });
 
-        viewModel.historyLiveData().observe(getViewLifecycleOwner(), new Observer<TokopediaDatabase<List<HistoryModel>>>() {
-            @Override
-            public void onChanged(TokopediaDatabase<List<HistoryModel>> listTokopediaDatabase) {
-                setLineChart(listTokopediaDatabase.getData());
-            }
-        });
+    }
+
+    public void configureChart(){
+        Description desc = new Description();
+        desc.setText("Price History");
+        desc.setTextSize(25);
+        desc.setTextColor(Color.WHITE);
+        binding.chart.setDescription(desc);
 
     }
 
-    public void setLineChart(List<HistoryModel> historyModels){
-        List<ILineDataSet> dataSets = new ArrayList<>();
+    public void setLineChart(List<HistoryModel> historyModels)  {
         ArrayList<Entry> list = new ArrayList<>();
         ArrayList<Entry> listSell = new ArrayList<>();
         LineDataSet price = new LineDataSet(list, "Buy Price");
         LineDataSet sellPrice = new LineDataSet(listSell, "Sell Price");
         binding.chart.getAxisLeft().setTextColor(Color.WHITE);
+        binding.chart.getXAxis().setTextColor(Color.WHITE);
 
         float i = 0;
         List<HistoryModel> historyModelsList = historyModels;
+
         for (HistoryModel p: historyModelsList){
             list.add(new Entry(i++, p.getBuy_price()));
-            listSell.add(new Entry(i++, p.getSell_price()));
+            listSell.add(new Entry(i, p.getSell_price()));
         }
 
+
+        XAxis xAxis = binding.chart.getXAxis();
+        xAxis.setValueFormatter(new ValueFormatter() {
+            private final SimpleDateFormat format = new SimpleDateFormat("dd-MMM-yyyy");
+            @Override
+            public String getFormattedValue(float value) {
+                return format.format(historyModelsList.get((int) value).getDate_price());
+            }
+        });
+
         price.setDrawCircleHole(true);
-        price.setCircleRadius(1);
+        price.setCircleRadius(2);
         price.setDrawValues(false);
         price.setLineWidth(1);
         price.setColor(Color.YELLOW);
@@ -145,36 +161,16 @@ public class WalletFragment extends Fragment {
         Legend legend = binding.chart.getLegend();
         legend.setEnabled(true);
         legend.setTextColor(Color.WHITE);
+        binding.chart.setAutoScaleMinMaxEnabled(true);
 
-
-        dataSets.add(price);
-        dataSets.add(sellPrice);
 
         price.setValues(list);
         sellPrice.setValues(listSell);
 
-        LineData lineData = new LineData(dataSets);
+
+        LineData lineData = new LineData(price, sellPrice);
         binding.chart.setData(lineData);
         binding.chart.invalidate();
-
-    }
-
-    public void configureChart(){
-        Description desc = new Description();
-        desc.setText("Price History");
-        desc.setTextSize(25);
-        desc.setTextColor(Color.WHITE);
-        binding.chart.setDescription(desc);
-
-        XAxis xAxis = binding.chart.getXAxis();
-        xAxis.setValueFormatter(new ValueFormatter() {
-            private final SimpleDateFormat format = new SimpleDateFormat("dd MMM yyyy", Locale.ENGLISH);
-            @Override
-            public String getFormattedValue(float value) {
-                long millis = (long) (value * 1000L);
-                return format.format(new Date(millis));
-            }
-        });
 
     }
 }
