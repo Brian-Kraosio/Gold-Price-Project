@@ -18,15 +18,19 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.github.mikephil.charting.components.AxisBase;
 import com.github.mikephil.charting.components.Description;
 import com.github.mikephil.charting.components.Legend;
 import com.github.mikephil.charting.components.XAxis;
+import com.github.mikephil.charting.components.YAxis;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
 import com.github.mikephil.charting.formatter.ValueFormatter;
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
 
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -121,6 +125,8 @@ public class WalletFragment extends Fragment {
         LineDataSet sellPrice = new LineDataSet(listSell, "Sell Price");
         binding.chart.getAxisLeft().setTextColor(Color.WHITE);
         binding.chart.getXAxis().setTextColor(Color.WHITE);
+        binding.chart.getXAxis().setTextSize(9);
+        binding.chart.getAxisLeft().setTextSize(9);
 
         float i = 0;
         List<HistoryModel> historyModelsList = historyModels;
@@ -133,12 +139,25 @@ public class WalletFragment extends Fragment {
 
         XAxis xAxis = binding.chart.getXAxis();
         xAxis.setValueFormatter(new ValueFormatter() {
-            private final SimpleDateFormat format = new SimpleDateFormat("dd-MMM-yyyy");
+            private final SimpleDateFormat format = new SimpleDateFormat("dd MMM yyyy");
             @Override
             public String getFormattedValue(float value) {
                 return format.format(historyModelsList.get((int) value).getDate_price());
             }
         });
+
+        YAxis yAxis = binding.chart.getAxisLeft();
+        yAxis.setValueFormatter(new ValueFormatter() {
+            @Override
+            public String getFormattedValue(float value) {
+                Locale myIndonesianLocale = new Locale("in", "ID");
+                DecimalFormat format = (DecimalFormat) NumberFormat.getCurrencyInstance(myIndonesianLocale);
+                format.setPositivePrefix("Rp. ");
+                format.setNegativePrefix("Rp. -");
+                return (format.format(value));
+            }
+        });
+
 
         price.setDrawCircleHole(true);
         price.setCircleRadius(2);
@@ -150,7 +169,7 @@ public class WalletFragment extends Fragment {
         price.setFillColor(Color.YELLOW);
 
         sellPrice.setDrawCircleHole(true);
-        sellPrice.setCircleRadius(1);
+        sellPrice.setCircleRadius(2);
         sellPrice.setDrawValues(false);
         sellPrice.setLineWidth(1);
         sellPrice.setColor(Color.RED);
@@ -163,10 +182,8 @@ public class WalletFragment extends Fragment {
         legend.setTextColor(Color.WHITE);
         binding.chart.setAutoScaleMinMaxEnabled(true);
 
-
         price.setValues(list);
         sellPrice.setValues(listSell);
-
 
         LineData lineData = new LineData(price, sellPrice);
         binding.chart.setData(lineData);
