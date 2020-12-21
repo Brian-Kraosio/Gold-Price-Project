@@ -12,7 +12,7 @@ import id.putraprima.mygoldtracker.api.HistoryModel;
 import id.putraprima.mygoldtracker.api.HistoryRepository;
 import id.putraprima.mygoldtracker.api.PriceModel;
 import id.putraprima.mygoldtracker.api.PriceRepository;
-import id.putraprima.mygoldtracker.api.TokopediaDatabase;
+import id.putraprima.mygoldtracker.api.TokopediaEnvelope;
 import id.putraprima.mygoldtracker.model.Wallet;
 import id.putraprima.mygoldtracker.repository.WalletRepository;
 
@@ -21,10 +21,10 @@ public class WalletViewModel extends ViewModel {
     private PriceRepository priceRepository;
     private HistoryRepository historyRepository;
     public LiveData<Float> weightLiveData = new MutableLiveData<>();
-    private MutableLiveData<TokopediaDatabase<PriceModel>> tokopediaDatabaseMutableLiveData = new MutableLiveData<>();
+    private MutableLiveData<TokopediaEnvelope<PriceModel>> tokopediaDatabaseMutableLiveData = new MutableLiveData<>();
     public LiveData<List<Wallet>> listWalletLiveData = new MutableLiveData<>();
     private LiveData<Float> totalBuyPrice;
-    private MutableLiveData<TokopediaDatabase<List<HistoryModel>>> tokopediaHistoryMutableLiveData = new MutableLiveData<>();
+    private MutableLiveData<TokopediaEnvelope<List<HistoryModel>>> tokopediaHistoryMutableLiveData = new MutableLiveData<>();
 
     public WalletViewModel(Application application) {
         super();
@@ -40,11 +40,11 @@ public class WalletViewModel extends ViewModel {
         tokopediaHistoryMutableLiveData = historyRepository.getHistory();
     }
 
-    public LiveData<TokopediaDatabase<PriceModel>> priceLiveData(){
+    public LiveData<TokopediaEnvelope<PriceModel>> priceLiveData(){
         return tokopediaDatabaseMutableLiveData;
     }
 
-    public LiveData<TokopediaDatabase<List<HistoryModel>>> historyLiveData(){
+    public LiveData<TokopediaEnvelope<List<HistoryModel>>> historyLiveData(){
         return tokopediaHistoryMutableLiveData;
     }
 

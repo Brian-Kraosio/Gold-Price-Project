@@ -20,6 +20,6 @@ public class PortofolioViewModelFactory implements ViewModelProvider.Factory {
         if(modelClass.isAssignableFrom(PortofolioViewModel.class)){
             return (T) new PortofolioViewModel(application);
         }
-        throw new IllegalArgumentException("Must be MainActivityViewModel Class");
+        throw new IllegalArgumentException("Must be PortofolioViewModel Class");
     }
 }

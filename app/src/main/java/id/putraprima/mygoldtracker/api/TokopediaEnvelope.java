@@ -1,11 +1,11 @@
 package id.putraprima.mygoldtracker.api;
 
-public class TokopediaDatabase<T> {
+public class TokopediaEnvelope<T> {
     private String code;
     private String latency;
     T data;
 
-    public TokopediaDatabase() {
+    public TokopediaEnvelope() {
     }
 
     public String getCode() {

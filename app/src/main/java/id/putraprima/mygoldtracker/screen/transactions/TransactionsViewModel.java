@@ -9,11 +9,11 @@ import java.util.List;
 import id.putraprima.mygoldtracker.api.BuyModel;
 import id.putraprima.mygoldtracker.api.PriceModel;
 import id.putraprima.mygoldtracker.api.PriceRepository;
-import id.putraprima.mygoldtracker.api.TokopediaDatabase;
+import id.putraprima.mygoldtracker.api.TokopediaEnvelope;
 
 public class TransactionsViewModel extends ViewModel {
     private PriceRepository priceRepository;
-    private MutableLiveData<TokopediaDatabase<PriceModel>> priceMutableLive = new MutableLiveData<>();
+    private MutableLiveData<TokopediaEnvelope<PriceModel>> priceMutableLive;
     private MutableLiveData<List<BuyModel>> appListMutableLiveData = new MutableLiveData<>();
 
     public TransactionsViewModel() {
@@ -21,7 +21,7 @@ public class TransactionsViewModel extends ViewModel {
         priceMutableLive = priceRepository.getPrice();
     }
 
-    public LiveData<TokopediaDatabase<PriceModel>> getPrice(){
+    public LiveData<TokopediaEnvelope<PriceModel>> getPrice(){
         return priceMutableLive;
     }
 

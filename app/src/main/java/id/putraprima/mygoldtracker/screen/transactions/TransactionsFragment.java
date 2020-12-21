@@ -6,7 +6,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -23,7 +22,7 @@ import java.util.List;
 import id.putraprima.mygoldtracker.R;
 import id.putraprima.mygoldtracker.api.BuyModel;
 import id.putraprima.mygoldtracker.api.PriceModel;
-import id.putraprima.mygoldtracker.api.TokopediaDatabase;
+import id.putraprima.mygoldtracker.api.TokopediaEnvelope;
 import id.putraprima.mygoldtracker.databinding.FragmentTransactionsBinding;
 
 public class TransactionsFragment extends Fragment {
@@ -45,9 +44,9 @@ public class TransactionsFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        viewModel.getPrice().observe(getViewLifecycleOwner(), new Observer<TokopediaDatabase<PriceModel>>() {
+        viewModel.getPrice().observe(getViewLifecycleOwner(), new Observer<TokopediaEnvelope<PriceModel>>() {
             @Override
-            public void onChanged(TokopediaDatabase<PriceModel> priceModelTokopediaDatabase) {
+            public void onChanged(TokopediaEnvelope<PriceModel> priceModelTokopediaDatabase) {
                 if(priceModelTokopediaDatabase!=null){
                     List<BuyModel> priceList = new ArrayList<>();
                     priceList.add(new BuyModel(0.5f, priceModelTokopediaDatabase.getData().getSell_price()/2, priceModelTokopediaDatabase.getData().getBuy_price()/2));

@@ -34,8 +34,9 @@ public class ProfileViewModel extends ViewModel {
         profileMutableLiveData.setValue(profile);
     }
 
-    public void profileUpdate(){
-        profileMutableLiveData.setValue(null);
+
+    public LiveData<Profile> getProfilePictureLiveData(){
+        return profileLiveData;
     }
 
     public LiveData<Profile> profileLiveData(){

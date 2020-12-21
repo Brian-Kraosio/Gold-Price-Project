@@ -80,6 +80,15 @@ public class ProfileFragment extends Fragment {
             }
         });
 
+        viewModel.getProfilePictureLiveData().observe(getViewLifecycleOwner(), new Observer<Profile>() {
+            @Override
+            public void onChanged(Profile profile) {
+                if (profile!=null){
+                binding.imageChange.setImageURI(Uri.parse(profile.getImage()));
+                }
+            }
+        });
+
 
     }
 
@@ -113,7 +122,7 @@ public class ProfileFragment extends Fragment {
 
 
     @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (resultCode != RESULT_CANCELED) {
             switch (requestCode) {
@@ -129,7 +138,7 @@ public class ProfileFragment extends Fragment {
                         try {
                             assert data != null;
                             Uri imageUri = data.getData();
-                            Profile profile = viewModel.getProfileLiveData().getValue();
+                            Profile profile = viewModel.getProfilePictureLiveData().getValue();
                             if (profile != null) {
                                 profile.setImage(imageUri.toString());
                                 viewModel.update(profile);

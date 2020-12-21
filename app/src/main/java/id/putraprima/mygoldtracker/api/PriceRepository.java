@@ -8,7 +8,7 @@ import retrofit2.Response;
 
 public class PriceRepository {
     private ApiInterface apiInterface;
-    private MutableLiveData<TokopediaDatabase<PriceModel>> price = new MutableLiveData<>();
+    private MutableLiveData<TokopediaEnvelope<PriceModel>> price = new MutableLiveData<>();
 
     private static PriceRepository priceRepository;
 
@@ -23,16 +23,16 @@ public class PriceRepository {
         this.apiInterface = RetrofitServices.createService(ApiInterface.class);
     }
 
-    public MutableLiveData<TokopediaDatabase<PriceModel>> getPrice(){
-        Call<TokopediaDatabase<PriceModel>> priceData = this.apiInterface.getPrice();
-        priceData.enqueue(new Callback<TokopediaDatabase<PriceModel>>() {
+    public MutableLiveData<TokopediaEnvelope<PriceModel>> getPrice(){
+        Call<TokopediaEnvelope<PriceModel>> priceData = this.apiInterface.getPrice();
+        priceData.enqueue(new Callback<TokopediaEnvelope<PriceModel>>() {
             @Override
-            public void onResponse(Call<TokopediaDatabase<PriceModel>> call, Response<TokopediaDatabase<PriceModel>> response) {
+            public void onResponse(Call<TokopediaEnvelope<PriceModel>> call, Response<TokopediaEnvelope<PriceModel>> response) {
                 price.setValue(response.body());
             }
 
             @Override
-            public void onFailure(Call<TokopediaDatabase<PriceModel>> call, Throwable t) {
+            public void onFailure(Call<TokopediaEnvelope<PriceModel>> call, Throwable t) {
                 price.setValue(null);
             }
         });

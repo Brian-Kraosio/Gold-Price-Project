@@ -7,8 +7,8 @@ import retrofit2.http.GET;
 
 public interface ApiInterface {
     @GET("/emas/api/gold/price")
-    Call<TokopediaDatabase<PriceModel>> getPrice();
+    Call<TokopediaEnvelope<PriceModel>> getPrice();
 
     @GET("/emas/api/gold/price/history")
-    Call<TokopediaDatabase<List<HistoryModel>>> getHistory();
+    Call<TokopediaEnvelope<List<HistoryModel>>> getHistory();
 }

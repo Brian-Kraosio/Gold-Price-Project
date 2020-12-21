@@ -18,7 +18,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.github.mikephil.charting.components.AxisBase;
 import com.github.mikephil.charting.components.Description;
 import com.github.mikephil.charting.components.Legend;
 import com.github.mikephil.charting.components.XAxis;
@@ -27,24 +26,19 @@ import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
 import com.github.mikephil.charting.formatter.ValueFormatter;
-import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
 
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
 import id.putraprima.mygoldtracker.R;
-import id.putraprima.mygoldtracker.adapter.WalletAdapter;
 import id.putraprima.mygoldtracker.api.HistoryModel;
 import id.putraprima.mygoldtracker.api.PriceModel;
-import id.putraprima.mygoldtracker.api.TokopediaDatabase;
+import id.putraprima.mygoldtracker.api.TokopediaEnvelope;
 import id.putraprima.mygoldtracker.databinding.FragmentWalletBinding;
-import id.putraprima.mygoldtracker.databinding.ItemWalletBinding;
 import id.putraprima.mygoldtracker.model.Wallet;
 import id.putraprima.mygoldtracker.screen.portofolio.PortofolioFragmentDirections;
 
@@ -76,9 +70,9 @@ public class WalletFragment extends Fragment {
                 Navigation.findNavController(requireView()).navigate(action);
             }
         });
-        viewModel.historyLiveData().observe(getViewLifecycleOwner(), new Observer<TokopediaDatabase<List<HistoryModel>>>() {
+        viewModel.historyLiveData().observe(getViewLifecycleOwner(), new Observer<TokopediaEnvelope<List<HistoryModel>>>() {
             @Override
-            public void onChanged(TokopediaDatabase<List<HistoryModel>> listTokopediaDatabase) {
+            public void onChanged(TokopediaEnvelope<List<HistoryModel>> listTokopediaDatabase) {
                 setLineChart(listTokopediaDatabase.getData());
             }
         });
@@ -100,9 +94,9 @@ public class WalletFragment extends Fragment {
             }
         });
 
-        viewModel.priceLiveData().observe(getViewLifecycleOwner(), new Observer<TokopediaDatabase<PriceModel>>() {
+        viewModel.priceLiveData().observe(getViewLifecycleOwner(), new Observer<TokopediaEnvelope<PriceModel>>() {
             @Override
-            public void onChanged(TokopediaDatabase<PriceModel> priceModelTokopediaDatabase) {
+            public void onChanged(TokopediaEnvelope<PriceModel> priceModelTokopediaDatabase) {
                 adapter.setPriceModel(priceModelTokopediaDatabase.getData());
             }
         });
