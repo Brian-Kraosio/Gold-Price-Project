@@ -46,7 +46,6 @@ public class WalletFragment extends Fragment {
 
     FragmentWalletBinding binding;
     WalletViewModel viewModel;
-    PriceModel priceModel;
 
     @Nullable
     @Override
